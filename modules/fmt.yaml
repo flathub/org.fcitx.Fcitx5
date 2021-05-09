@@ -3,8 +3,13 @@ buildsystem: cmake-ninja
 config-opts:
   - -DFMT_TEST=Off
 sources:
-  - type: git
-    url: https://github.com/fmtlib/fmt
-    branch: 7.1.2
+  - type: archive
+    url: https://github.com/fmtlib/fmt/releases/download/8.1.1/fmt-8.1.1.zip
+    sha256: 23778bad8edba12d76e4075da06db591f3b0e3c6c04928ced4a7282ca3400e5d
+    x-checker-data:
+      type: anitya
+      project-id: 11526
+      stable-only: true
+      url-template: https://github.com/fmtlib/fmt/releases/download/$version/fmt-$version.zip
 cleanup:
-  - "*"
+  - '*'

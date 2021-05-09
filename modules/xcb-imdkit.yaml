@@ -1,9 +1,14 @@
 name: xcb-imdkit
 buildsystem: cmake-ninja
 sources:
-  - type: git
-    url: https://github.com/fcitx/xcb-imdkit
-    tag: 1.0.2
+  - type: archive
+    url: https://github.com/fcitx/xcb-imdkit/archive/1.0.3/xcb-imdkit-1.0.3.tar.gz
+    sha256: 432452c092951f65fb738f19dfd28874ab971852cccfba0abef972699416a535
+    x-checker-data:
+      type: anitya
+      project-id: 138237
+      stable-only: true
+      url-template: https://github.com/fcitx/xcb-imdkit/archive/$version/xcb-imdkit-$version.tar.gz
 cleanup:
   - /include
   - /lib/pkgconfig
