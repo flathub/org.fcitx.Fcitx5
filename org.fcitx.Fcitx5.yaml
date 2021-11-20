@@ -28,6 +28,20 @@ add-extensions:
     add-ld-path: lib
     autodelete: true
 
+add-build-extensions:
+  org.fcitx.Fcitx5.Addon.ChineseAddons:
+    directory: addons-build/ChineseAddons
+    version: stable
+    remove-after-build: true
+  org.fcitx.Fcitx5.Addon.Mozc:
+    directory: addons-build/Mozc
+    version: stable
+    remove-after-build: true
+  org.fcitx.Fcitx5.Addon.Zhuyin:
+    directory: addons-build/Zhuyin
+    version: stable
+    remove-after-build: true
+
 modules:
   - modules/fmt.yaml
   - modules/xcb-imdkit.yaml
@@ -81,3 +95,12 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-configtool
         tag: 5.0.8
+
+  - name: addon-icons
+    buildsystem: simple
+    build-commands:
+      - find /app/addons-build/*/share/icons -name "org.fcitx.Fcitx5*" > icon.txt
+      - |
+        for icon in $(cat icon.txt); do 
+          install -Dvm644 -t "/app/$(echo ${icon}|cut -d / -f 5-|xargs dirname)" "$icon"
+        done
