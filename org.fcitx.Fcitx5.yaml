@@ -113,3 +113,9 @@ modules:
         for icon in $(cat icon.txt); do 
           install -Dvm644 -t "/app/$(echo ${icon}|cut -d / -f 5-|xargs dirname)" "$icon"
         done
+        
+  - name: script
+    buildsystem: simple
+    build-commands:
+      - sed -iE 's:(/provides>):\1\n  <content_rating type="oars-1.1" />:g' /app/share/metainfo/org.fcitx.Fcitx5.metainfo.xml
+      - mv /app/share/applications/{fcitx5-configtool,org.fcitx.Fcitx5.configtool}.desktop
