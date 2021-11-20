@@ -66,7 +66,7 @@ modules:
         tag: 5.0.10
         x-checker-data:
           type: git
-          tag-pattern: "^v([\\d.]+)$"
+          tag-pattern: "^([\\d.]+)$"
 
       - type: file
         dest: src/modules/spell/dict
@@ -92,7 +92,7 @@ modules:
         tag: 5.0.7
         x-checker-data:
           type: git
-          tag-pattern: "^v([\\d.]+)$"
+          tag-pattern: "^([\\d.]+)$"
 
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
@@ -103,7 +103,7 @@ modules:
         tag: 5.0.8
         x-checker-data:
           type: git
-          tag-pattern: "^v([\\d.]+)$"
+          tag-pattern: "^([\\d.]+)$"
 
   - name: addon-icons
     buildsystem: simple
