@@ -64,6 +64,9 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5
         tag: 5.0.10
+        x-checker-data:
+          type: git
+          tag-pattern: "^v([\\d.]+)$"
 
       - type: file
         dest: src/modules/spell/dict
@@ -87,6 +90,9 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
         tag: 5.0.7
+        x-checker-data:
+          type: git
+          tag-pattern: "^v([\\d.]+)$"
 
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
@@ -95,6 +101,9 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-configtool
         tag: 5.0.8
+        x-checker-data:
+          type: git
+          tag-pattern: "^v([\\d.]+)$"
 
   - name: addon-icons
     buildsystem: simple
