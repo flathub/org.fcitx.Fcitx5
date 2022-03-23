@@ -54,10 +54,10 @@ modules:
       - mv /app/bin/fcitx5{,-bin}
       - install -m755 fcitx5.sh /app/bin/fcitx5
     modules:
-      - modules/fmt.yaml
-      - modules/xcb-imdkit.yaml
-      - modules/libevent.yaml
-      - modules/json-c.yaml
+      - fmt/fmt.yaml
+      - json-c/json-c.yaml
+      - libevent/libevent.yaml
+      - xcb-imdkit/xcb-imdkit.yaml
       - name: cldr-emoji-annotation
         sources:
           - type: archive
