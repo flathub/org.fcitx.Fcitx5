@@ -27,21 +27,6 @@ finish-args:
   - --filesystem=xdg-config/ibus:create
   - --device=dri
 modules:
-  - modules/fmt.yaml
-  - modules/xcb-imdkit.yaml
-  - modules/libevent.yaml
-  - modules/json-c.yaml
-
-  - name: cldr-emoji-annotation
-    sources:
-      - type: archive
-        url: https://github.com/fujiwarat/cldr-emoji-annotation/releases/download/37.0_13.0_0_2/cldr-emoji-annotation-37.0_13.0_0_2.tar.gz
-        sha256: 7a24ea3dc17b814fbe8ee1127e1036679098ef2991b9266d738d375554210d13
-        x-checker-data:
-          type: anitya
-          project-id: 13423
-          stable-only: true
-          url-template: https://github.com/fujiwarat/cldr-emoji-annotation/releases/download/$version/cldr-emoji-annotation-$version.tar.gz
   - name: fcitx5
     buildsystem: cmake-ninja
     config-opts:
@@ -68,6 +53,21 @@ modules:
       - install -d /app/addons
       - mv /app/bin/fcitx5{,-bin}
       - install -m755 fcitx5.sh /app/bin/fcitx5
+    modules:
+      - modules/fmt.yaml
+      - modules/xcb-imdkit.yaml
+      - modules/libevent.yaml
+      - modules/json-c.yaml
+      - name: cldr-emoji-annotation
+        sources:
+          - type: archive
+            url: https://github.com/fujiwarat/cldr-emoji-annotation/releases/download/37.0_13.0_0_2/cldr-emoji-annotation-37.0_13.0_0_2.tar.gz
+            sha256: 7a24ea3dc17b814fbe8ee1127e1036679098ef2991b9266d738d375554210d13
+            x-checker-data:
+              type: anitya
+              project-id: 13423
+              stable-only: true
+              url-template: https://github.com/fujiwarat/cldr-emoji-annotation/releases/download/$version/cldr-emoji-annotation-$version.tar.gz
   - name: fcitx5-qt
     buildsystem: cmake-ninja
     config-opts:
