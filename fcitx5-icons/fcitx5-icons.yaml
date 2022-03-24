@@ -114,6 +114,7 @@ sources:
     branch: fcitx
     commit: 0b76eb6c1b8119d5aca5e3bc953fb2be18c94f74
     dest: mozc
+    disable-submodules: true
   - type: file
     path: install_icons
 build-commands:
