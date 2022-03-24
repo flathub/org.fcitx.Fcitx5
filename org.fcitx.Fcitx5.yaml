@@ -26,6 +26,17 @@ finish-args:
   - --filesystem=xdg-config/fcitx:create
   - --filesystem=xdg-config/ibus:create
   - --device=dri
+cleanup:
+  - /addons/*/include
+  - /addons/*/lib/cmake
+  - /addons/*/lib/pkgconfig
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - '*.a'
+  - '*.la'
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 modules:
   - name: fcitx5
     buildsystem: cmake-ninja

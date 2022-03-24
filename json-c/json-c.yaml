@@ -12,7 +12,3 @@ sources:
       project-id: 1477
       stable-only: true
       url-template: https://s3.amazonaws.com/json-c_releases/releases/json-c-$version.tar.gz
-cleanup:
-  - /include
-  - /lib/cmake
-  - /lib/pkgconfig

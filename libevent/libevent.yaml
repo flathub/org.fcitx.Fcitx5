@@ -13,6 +13,3 @@ sources:
       url-template: https://github.com/libevent/libevent/releases/download/release-$version-stable/libevent-$version-stable.tar.gz
 cleanup:
   - /bin
-  - /include
-  - /lib/pkgconfig
-  - /lib/cmake

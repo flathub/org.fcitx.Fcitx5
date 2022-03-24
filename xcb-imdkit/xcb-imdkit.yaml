@@ -9,7 +9,3 @@ sources:
       project-id: 138237
       stable-only: true
       url-template: https://github.com/fcitx/xcb-imdkit/archive/$version/xcb-imdkit-$version.tar.gz
-cleanup:
-  - /include
-  - /lib/pkgconfig
-  - /lib/cmake
