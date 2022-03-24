@@ -11,7 +11,6 @@ add-extensions:
     no-autodownload: true
     add-ld-path: lib
     autodelete: true
-separate-locales: false
 command: fcitx5
 finish-args:
   - --socket=session-bus
