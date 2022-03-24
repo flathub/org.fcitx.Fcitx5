@@ -1,5 +1,4 @@
 app-id: org.fcitx.Fcitx5
-branch: stable
 base: io.qt.qtwebengine.BaseApp
 base-version: 5.15-21.08
 runtime: org.kde.Platform
@@ -7,7 +6,6 @@ runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 add-extensions:
   org.fcitx.Fcitx5.Addon:
-    version: stable
     directory: addons
     subdirectories: true
     no-autodownload: true
