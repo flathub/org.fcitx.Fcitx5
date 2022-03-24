@@ -1,0 +1,23 @@
+name: fcitx5-rime
+buildsystem: cmake-ninja
+build-options:
+  prefix: /app/addons/Rime
+  prepend-path: /app/addons/Rime/bin
+  prepend-pkg-config-path: /app/addons/Rime/lib/pkgconfig
+  prepend-ld-library-path: /app/addons/Rime/lib
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-rime/archive/5.0.12/fcitx5-rime-5.0.12.tar.gz
+    sha256: 549da0d08681ada3cb4148a03e867764d16a514eb021c9bbdd8a2336f2626556
+    x-checker-data:
+      type: anitya
+      project-id: 138239
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-rime/archive/$version/fcitx5-rime-$version.tar.gz
+  - type: file
+    path: ../install_icons
+modules:
+  - librime/librime.yaml
+  - librime-data/librime-data.yaml

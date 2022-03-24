@@ -1,0 +1,20 @@
+name: fcitx5-anthy
+buildsystem: cmake
+build-options:
+  prefix: /app/addons/Anthy
+  prepend-pkg-config-path: /app/addons/Anthy/lib/pkgconfig
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-anthy/archive/5.0.10/fcitx5-anthy-5.0.10.tar.gz
+    sha256: 0a7667930c2fc2efa991060d728f9002479185ee186b91c7745323131f65cf58
+    x-checker-data:
+      type: anitya
+      project-id: 174357
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-anthy/archive/$version/fcitx5-anthy-$version.tar.gz
+  - type: file
+    path: ../install_icons
+modules:
+  - anthy-unicode/anthy-unicode.yaml

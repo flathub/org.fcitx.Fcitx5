@@ -1,0 +1,17 @@
+name: gyp
+buildsystem: simple
+build-commands:
+  - python setup.py build
+  - python setup.py install --skip-build --prefix=${FLATPAK_DEST} --root=/ --optimize=1
+sources:
+  - type: archive
+    url: https://github.com/chromium/gyp/archive/bc83cdacf5428ab6ddcc92fd0b0fc494cc9a4d4f/gyp-bc83cdacf5428ab6ddcc92fd0b0fc494cc9a4d4f.tar.gz
+    sha256: 7c4d140766e4280eb569fd7ce14ab35d91e5d87707ee513dba98be7809c9d02b
+    x-checker-data:
+      type: html
+      url: https://github.com/chromium/gyp/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/chromium/gyp/archive/$version/gyp-$version.tar.gz
+      sort-matches: false
+cleanup:
+  - '*'

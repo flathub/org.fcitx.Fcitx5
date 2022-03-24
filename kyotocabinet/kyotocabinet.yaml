@@ -1,0 +1,17 @@
+name: kyotocabinet
+config-opts:
+  - --disable-opt
+  - --disable-static
+sources:
+  - type: archive
+    url: http://fallabs.com/kyotocabinet/pkg/kyotocabinet-1.2.79.tar.gz
+    sha256: 67fb1da4ae2a86f15bb9305f26caa1a7c0c27d525464c71fd732660a95ae3e1d
+    x-checker-data:
+      type: anitya
+      project-id: 1530
+      stable-only: true
+      url-template: http://fallabs.com/kyotocabinet/pkg/kyotocabinet-$version.tar.gz
+cleanup:
+  - /bin
+  - /share/doc
+  - /share/man

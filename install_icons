@@ -1,0 +1,13 @@
+#!/bin/bash
+
+shopt -s nullglob
+for dir in {data,icons,icon}/{16x16,22x22,24x24,32x32,48x48,64x64,128x128,256x256,scalable}; do
+  (
+    if [ -d $dir ]; then
+      cd $dir
+      for icon in $(find . -type f -a \( -name 'org.fcitx.Fcitx5.fcitx*.png' -o -name 'org.fcitx.Fcitx5.fcitx*.svg' \)); do
+          install -vDm644 $icon ${FLATPAK_DEST}/share/icons/hicolor/$(basename $dir)/$icon
+      done
+    fi
+  )
+done

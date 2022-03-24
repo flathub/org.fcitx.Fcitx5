@@ -1,0 +1,16 @@
+name: fcitx5-lua
+buildsystem: cmake
+build-options:
+  prefix: /app/addons/Lua
+  prepend-pkg-config-path: /app/addons/Lua/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-lua/archive/5.0.7/fcitx5-lua-5.0.7.tar.gz
+    sha256: cb0cf1e5fd3d4dd906e482ae0cc50944e804b4ce10515968334f9530dbdfa3b4
+    x-checker-data:
+      type: anitya
+      project-id: 138242
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-lua/archive/$version/fcitx5-lua-$version.tar.gz
+modules:
+  - lua/lua.yaml

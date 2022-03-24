@@ -1,0 +1,20 @@
+name: fcitx5-table-extra
+buildsystem: cmake
+build-options:
+  prefix: /app/addons/TableExtra
+  prepend-pkg-config-path: /app/addons/TableExtra/lib/pkgconfig
+config-opts:
+  - -DCMAKE_PREFIX_PATH=/app/addons/ChineseAddons
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-table-extra/archive/5.0.9/fcitx5-table-extra-5.0.9.tar.gz
+    sha256: 8bf92507dabf396303e488dd5c527ade63c2f221637ed6baf4535834855182b5
+    x-checker-data:
+      type: anitya
+      project-id: 174362
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-table-extra/archive/$version/fcitx5-table-extra-$version.tar.gz
+  - type: file
+    path: ../install_icons

@@ -1,0 +1,18 @@
+name: fcitx5-sayura
+buildsystem: cmake
+build-options:
+  prefix: /app/addons/Sayura
+  prepend-pkg-config-path: /app/addons/Sayura/lib/pkgconfig
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-sayura/archive/5.0.6/fcitx5-sayura-5.0.6.tar.gz
+    sha256: d51b821f437a275d0bf13a8efb07d7195886080d229411da1df3c2acb23acf8a
+    x-checker-data:
+      type: anitya
+      project-id: 174361
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-sayura/archive/$version/fcitx5-sayura-$version.tar.gz
+  - type: file
+    path: ../install_icons

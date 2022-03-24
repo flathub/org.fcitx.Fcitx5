@@ -1,0 +1,24 @@
+name: fcitx5-zhuyin
+buildsystem: cmake-ninja
+build-options:
+  prefix: /app/addons/Zhuyin
+  prepend-pkg-config-path: /app/addons/Zhuyin/lib/pkgconfig
+  prepend-ld-library-path: /app/addons/Zhuyin/lib
+  ldflags: -L/app/addons/Zhuyin/lib
+  cflags: -I/app/addons/Zhuyin/include
+  cxxflags: -I/app/addons/Zhuyin/include
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-zhuyin/fcitx5-zhuyin-5.0.8_dict.tar.xz
+    sha256: 9fbf018ca78457dde4f1d5a52726f8b3b0dcb64614795a9f196c82baad1109f7
+    x-checker-data:
+      type: anitya
+      project-id: 180079
+      stable-only: true
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-zhuyin/fcitx5-zhuyin-${version}_dict.tar.xz
+  - type: file
+    path: ../install_icons
+modules:
+  - libpinyin/libpinyin.yaml

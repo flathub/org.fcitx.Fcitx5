@@ -1,0 +1,20 @@
+name: libhangul
+build-options:
+  prefix: /app/addons/Hangul
+  prepend-pkg-config-path: /app/addons/Hangul/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://github.com/libhangul/libhangul/archive/libhangul-0.1.0.tar.gz
+    sha256: e2a81ef159ed098d3cc1a20377dba6204821b7ce2bc24cfb2f2543adf3bc5830
+    x-checker-data:
+      type: anitya
+      project-id: 1630
+      stable-only: true
+      url-template: https://github.com/libhangul/libhangul/archive/libhangul-$version.tar.gz
+  - type: shell
+    commands:
+      - ./autogen.sh
+      - automake --add-missing
+      - autoreconf
+cleanup:
+  - /addons/Hangul/bin

@@ -1,0 +1,16 @@
+name: fcitx5-libthai
+buildsystem: cmake
+build-options:
+  prefix: /app/addons/LibThai
+  prepend-pkg-config-path: /app/addons/LibThai/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-libthai/fcitx5-libthai-5.0.7.tar.xz
+    sha256: 3d146a0dcc43b4f10302af9a5fdfca86129b6b1538ffabc26f0351592656c4cf
+    x-checker-data:
+      type: anitya
+      project-id: 174358
+      stable-only: true
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-libthai/fcitx5-libthai-$version.tar.xz
+modules:
+  - libthai/libthai.yaml

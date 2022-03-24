@@ -1,0 +1,59 @@
+name: mozc
+buildsystem: simple
+build-options:
+  append-path: /app/addons/Mozc/bin
+  prefix: /app/addons/Mozc
+  prepend-pkg-config-path: /app/addons/Mozc/lib/pkgconfig
+subdir: src
+build-commands:
+  - GYP_DEFINES="document_dir=/app/ime/mozc/licenses/mozc use_libzinnia=1 enable_gtk_renderer=0
+    use_fcitx5=YES use_fcitx=0 use_libprotobuf=1" python build_mozc.py gyp --gypdir=/app/bin
+    --server_dir=/app/addons/Mozc/lib/mozc
+  - python build_mozc.py build -c Release server/server.gyp:mozc_server gui/gui.gyp:mozc_tool
+    unix/fcitx5/fcitx5.gyp:fcitx5-mozc
+  - _bldtype=Release PREFIX=${FLATPAK_DEST}/addons/Mozc ../scripts/install_server
+  - _bldtype=Release PREFIX=${FLATPAK_DEST}/addons/Mozc ../scripts/install_fcitx5
+post-install:
+  - PREFIX=${FLATPAK_DEST} ../scripts/install_fcitx5_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/mozc/archive/1e52f804db1f0218ebdd7e6a672df82332a53a3a/mozc-1e52f804db1f0218ebdd7e6a672df82332a53a3a.tar.gz
+    sha256: 5824c5175a00b4f78d6efec77e8eed281965c6f09c61dc5519d7486d50638f0e
+    x-checker-data:
+      type: html
+      url: https://github.com/fcitx/mozc/commits/fcitx.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/fcitx/mozc/archive/$version/mozc-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    dest: src/third_party/abseil-cpp
+    url: https://github.com/abseil/abseil-cpp/archive/20211102.0/abseil-cpp-20211102.0.tar.gz
+    sha256: dcf71b9cba8dc0ca9940c4b316a0c796be8fab42b070bb6b7cab62b48f0e66c4
+    x-checker-data:
+      type: anitya
+      project-id: 115295
+      stable-only: true
+      url-template: https://github.com/abseil/abseil-cpp/archive/$version/abseil-cpp-$version.tar.gz
+  - type: archive
+    dest: src/third_party/japanese_usage_dictionary
+    url: https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/a4a66772e33746b91e99caceecced9a28507e925/japanese-usage-dictionary-a4a66772e33746b91e99caceecced9a28507e925.tar.gz
+    sha256: c5931c940c3659ff27717e02eaf2d9065f8257fe0c4d15f7bc51f28b53dd5561
+    x-checker-data:
+      type: html
+      url: https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/$version/japanese-usage-dictionary-$version.tar.gz
+      sort-matches: false
+  - type: shell
+    commands:
+      - sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
+      # TODO: find a way to avoid the protobuf symlinks workaround
+      - sed "s|-lprotobuf|-L/app/addons/Mozc/lib -lprotobuf|" -i src/protobuf/protobuf.gyp
+      - ln -s ../addons/Mozc/include/google -t /app/include/
+      - ln -sr ${FLATPAK_DEST}/addons/Mozc/lib/libprotobuf.so* -t /app/lib/
+cleanup:
+  - /addons/Mozc/bin
+  - /lib/libprotobuf*
+modules:
+  - gyp/gyp.yaml
+  - protobuf/protobuf.yaml

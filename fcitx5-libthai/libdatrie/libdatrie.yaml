@@ -1,0 +1,17 @@
+name: libdatrie
+build-options:
+  prefix: /app/addons/LibThai
+  prepend-pkg-config-path: /app/addons/LibThai/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-0.2.13.tar.xz
+    sha256: 12231bb2be2581a7f0fb9904092d24b0ed2a271a16835071ed97bed65267f4be
+    x-checker-data:
+      type: anitya
+      project-id: 7342
+      stable-only: true
+      url-template: https://linux.thai.net/pub/thailinux/software/libthai/libdatrie-$version.tar.xz
+cleanup:
+  - /addons/LibThai/bin
+  - /addons/LibThai/share/doc
+  - /addons/LibThai/share/man

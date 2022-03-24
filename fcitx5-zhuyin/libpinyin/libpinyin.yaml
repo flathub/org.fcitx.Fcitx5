@@ -1,0 +1,26 @@
+name: libpinyin
+build-options:
+  prefix: /app/addons/Zhuyin
+  prepend-pkg-config-path: /app/addons/Zhuyin/lib/pkgconfig
+  prepend-ld-library-path: /app/addons/Zhuyin/lib
+  ldflags: -L/app/addons/Zhuyin/lib
+  cflags: -I/app/addons/Zhuyin/include
+  cxxflags: -I/app/addons/Zhuyin/include
+config-opts:
+  - --with-dbm=KyotoCabinet
+  - --enable-libzhuyin
+sources:
+  - type: archive
+    url: https://github.com/libpinyin/libpinyin/releases/download/2.6.1/libpinyin-2.6.1.tar.gz
+    sha256: fc42c4820c0e1609788bbfaf693dcb6265a3caf2aa963b20e7a994054a528b51
+    x-checker-data:
+      type: anitya
+      project-id: 1353
+      stable-only: true
+      url-template: https://github.com/libpinyin/libpinyin/releases/download/$version/libpinyin-$version.tar.gz
+  - type: shell
+    commands:
+      - autoreconf -fiv
+cleanup:
+  - /addons/Zhuyin/bin
+  - /addons/Zhuyin/share/man

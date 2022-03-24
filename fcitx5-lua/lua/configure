@@ -1,0 +1,14 @@
+#!/bin/bash
+
+PREFIX="$(echo "$@" | awk '{ sub(/.*--prefix=/, ""); sub(/ .*/, ""); print}')"
+
+sed -e "s|/usr/local/|$PREFIX/|" \
+    -e "s|LUA_IDSIZE	60|LUA_IDSIZE	512|" \
+    -i src/luaconf.h
+sed -e "/^INSTALL_TOP.*=/ s|/usr/local|$PREFIX|" \
+    -e "/^TO_LIB.*=/ s/liblua.a/liblua.so/" \
+    -i Makefile
+sed -e "/^PLAT.*=/ s/guess/linux/" \
+    -i Makefile src/Makefile
+sed -e "/^CFLAGS.*=/d" \
+    -i src/Makefile

@@ -1,0 +1,23 @@
+name: libkkc
+build-options:
+  prefix: /app/addons/Kkc
+  prepend-pkg-config-path: /app/addons/Kkc/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://github.com/ueno/libkkc/releases/download/v0.3.5/libkkc-0.3.5.tar.gz
+    sha512: f611c3104a22ad38af29746870849d8937b6af2a7fee0952cc25f36ef845b5617a192df7ca63ff2a507384f7a6a13c9c1b4fa3b9a34f3f041bee8793d04b9236
+    x-checker-data:
+      type: anitya
+      project-id: 228901
+      stable-only: true
+      url-template: https://github.com/ueno/libkkc/releases/download/v$version/libkkc-$version.tar.gz
+  - type: patch
+    path: libkkc-python3.patch
+make-args:
+  - V=1
+cleanup:
+  - /addons/Kkc/bin
+  - /addons/Kkc/lib/girepository*
+  - /addons/Kkc/share/gir*
+  - /addons/Kkc/share/libkkc/templates
+  - /addons/Kkc/share/vala

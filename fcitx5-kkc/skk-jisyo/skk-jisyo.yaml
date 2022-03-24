@@ -1,0 +1,17 @@
+name: skk-jisyo
+buildsystem: simple
+build-options:
+  prefix: /app/addons/Kkc
+  prepend-pkg-config-path: /app/addons/Kkc/lib/pkgconfig
+build-commands:
+  - install -Dm644 SKK-JISYO.* -t ${FLATPAK_DEST}/addons/Kkc/share/skk/
+sources:
+  - type: archive
+    url: https://github.com/skk-dev/dict/archive/c6e6a8822b673bfe3e7182f99cdffd1f7735a61e/dict-c6e6a8822b673bfe3e7182f99cdffd1f7735a61e.tar.gz
+    sha256: d73d2450e6d15c509cbcce59c409adbe837d60cf0494bef3f709477b19757f35
+    x-checker-data:
+      type: html
+      url: https://github.com/skk-dev/dict/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/skk-dev/dict/archive/$version/dict-$version.tar.gz
+      sort-matches: false

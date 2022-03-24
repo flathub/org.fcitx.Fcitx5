@@ -1,0 +1,24 @@
+name: fcitx5-kkc
+buildsystem: cmake-ninja
+build-options:
+  prefix: /app/addons/Kkc
+  prepend-pkg-config-path: /app/addons/Kkc/lib/pkgconfig
+config-opts:
+  - -DSKK_DEFAULT_PATH=/app/addons/Skk/share/skk/SKK-JISYO.L
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-kkc/archive/5.0.8/fcitx5-kkc-5.0.8.tar.gz
+    sha256: bcc2ce56ff01f3fcc396c4637793493b2aa2a71eea364630b75ee23ddf1092a8
+    x-checker-data:
+      type: anitya
+      project-id: 138241
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-kkc/archive/$version/fcitx5-kkc-$version.tar.gz
+  - type: file
+    path: ../install_icons
+modules:
+  - libkkc/libkkc.yaml
+  - libkkc-data/libkkc-data.yaml
+  - skk-jisyo/skk-jisyo.yaml

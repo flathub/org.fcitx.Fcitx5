@@ -1,0 +1,17 @@
+name: libthai
+build-options:
+  prefix: /app/addons/LibThai
+  prepend-pkg-config-path: /app/addons/LibThai/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://linux.thai.net/pub/thailinux/software/libthai/libthai-0.1.29.tar.xz
+    sha256: fc80cc7dcb50e11302b417cebd24f2d30a8b987292e77e003267b9100d0f4bcd
+    x-checker-data:
+      type: anitya
+      project-id: 1737
+      stable-only: true
+      url-template: https://linux.thai.net/pub/thailinux/software/libthai/libthai-$version.tar.xz
+cleanup:
+  - /addons/LibThai/share/doc
+modules:
+  - ../libdatrie/libdatrie.yaml

@@ -1,0 +1,20 @@
+name: capnproto
+buildsystem: cmake-ninja
+build-options:
+  prefix: /app/addons/Rime
+  prepend-pkg-config-path: /app/addons/Rime/lib/pkgconfig
+  prepend-ld-library-path: /app/addons/Rime/lib
+config-opts:
+  - -DBUILD_SHARED_LIBS=ON
+  - -DBUILD_TESTING=OFF
+sources:
+  - type: archive
+    url: https://capnproto.org/capnproto-c++-0.9.1.tar.gz
+    sha256: 83680aaef8c192b884e38eab418b8482d321af6ae7ab7befa3a9370b8e716aad
+    x-checker-data:
+      type: anitya
+      project-id: 11515
+      stable-only: true
+      url-template: https://capnproto.org/capnproto-c++-$version.tar.gz
+cleanup:
+  - /addons/Rime/bin

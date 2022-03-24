@@ -1,0 +1,20 @@
+name: fcitx5-unikey
+buildsystem: cmake-ninja
+build-options:
+  prefix: /app/addons/Unikey
+  prepend-pkg-config-path: /app/addons/Unikey/lib/pkgconfig
+config-opts:
+  - -DENABLE_QT=ON
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-unikey/archive/5.0.9/fcitx5-unikey-5.0.9.tar.gz
+    sha256: e16fc7ef34716f634163af82e999f0f260196fbf4bbefaa7a382a5d3864c1073
+    x-checker-data:
+      type: anitya
+      project-id: 180082
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-unikey/archive/$version/fcitx5-unikey-$version.tar.gz
+  - type: file
+    path: ../install_icons

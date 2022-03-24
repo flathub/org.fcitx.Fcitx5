@@ -1,0 +1,31 @@
+From 4cfbfcbed4f67e71b3d18fcf02f232e86d9232ff Mon Sep 17 00:00:00 2001
+From: tinywrkb <tinywrkb@gmail.com>
+Date: Thu, 24 Mar 2022 16:13:40 +0200
+Subject: [PATCH] Set LibIME data dirs after loading LibIMECore
+
+When CMAKE_INSTALL_PREFIX is different from the prefix of LibIME,
+LIBIME_INSTALL_PKGDATADIR is not under CMAKE_INSTALL_PREFIX.
+Setting LibIME data dirs after loading LibIMECore fixes this.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 031395c..2c616ee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,10 +28,10 @@ find_package(Fcitx5Utils REQUIRED)
+ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
+ 
+ find_package(Boost 1.61 REQUIRED COMPONENTS iostreams)
++find_package(LibIMECore REQUIRED)
+ set(LIBIME_INSTALL_PKGDATADIR "${CMAKE_INSTALL_FULL_DATADIR}/libime")
+ set(LIBIME_INSTALL_LIBDATADIR "${CMAKE_INSTALL_FULL_LIBDIR}/libime")
+ 
+-find_package(LibIMECore REQUIRED)
+ find_package(Gettext REQUIRED)
+ find_package(Fcitx5Module REQUIRED Spell Punctuation QuickPhrase)
+ 
+-- 
+2.35.1
+

@@ -1,0 +1,15 @@
+name: anthy-unicode
+build-options:
+  prefix: /app/addons/Anthy
+  prepend-pkg-config-path: /app/addons/Anthy/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://github.com/fujiwarat/anthy-unicode/archive/1.0.0.20211224/anthy-unicode-1.0.0.20211224.tar.gz
+    sha256: 5fdcc1a6cc218d5cee37560fc44659f237d099ecd80b03475b4744c1742ac89b
+    x-checker-data:
+      type: anitya
+      project-id: 242970
+      stable-only: true
+      url-template: https://github.com/fujiwarat/anthy-unicode/archive/$version/anthy-unicode-$version.tar.gz
+cleanup:
+  - /addons/Anthy/bin

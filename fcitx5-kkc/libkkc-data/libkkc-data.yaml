@@ -1,0 +1,17 @@
+name: libkkc-data
+build-options:
+  prefix: /app/addons/Kkc
+  prepend-path: /app/addons/Kkc/bin
+sources:
+  - type: archive
+    url: https://github.com/ueno/libkkc/releases/download/v0.3.5/libkkc-data-0.2.7.tar.xz
+    sha256: 9e678755a030043da68e37a4049aa296c296869ff1fb9e6c70026b2541595b99
+    # TODO: fix f-e-d-c
+    #x-checker-data:
+    #  type: anitya
+    #  project-id: 228900
+    #  stable-only: true
+    #  url-template: https://github.com/ueno/libkkc/releases/download/v$version/libkkc-data-$version.tar.xz
+  - type: patch
+    path: libkkc-python3.patch
+    strip-components: 4

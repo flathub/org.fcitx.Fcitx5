@@ -1,0 +1,34 @@
+name: librime
+buildsystem: cmake-ninja
+build-options:
+  prefix: /app/addons/Rime
+  prepend-pkg-config-path: /app/addons/Rime/lib/pkgconfig
+  prepend-ld-library-path: /app/addons/Rime/lib
+builddir: true
+config-opts:
+  - -DBUILD_TEST=OFF
+sources:
+  - type: archive
+    url: https://github.com/rime/librime/archive/1.7.3/librime-1.7.3.tar.gz
+    sha256: c76b937a27d7b9352c3eea9eb3adaebf70c93457104c7d47d40c006009092c20
+    x-checker-data:
+      type: anitya
+      project-id: 228902
+      stable-only: true
+      url-template: https://github.com/rime/librime/archive/$version/librime-$version.tar.gz
+  - type: patch
+    path: cmath-include.patch
+  - type: shell
+    commands:
+      - ln -s ../../../include/{marisa{,.h},opencc} -t /app/addons/Rime/include/
+      - ln -s ../../../lib/lib{marisa,opencc}.so -t /app/addons/Rime/lib/
+cleanup:
+  - /addons/Rime/bin
+  - /addons/Rime/lib/libmarisa.so
+  - /addons/Rime/lib/libopencc.so
+  - /addons/Rime/share/cmake
+modules:
+  - ../capnproto/capnproto.yaml
+  - ../google-glog/google-glog.yaml
+  - ../leveldb/leveldb.yaml
+  - ../yaml-cpp/yaml-cpp.yaml

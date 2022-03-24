@@ -1,0 +1,19 @@
+name: libgee
+build-options:
+  env:
+    - NOCONFIGURE=1
+make-install-args:
+  - girdir=/app/share/gir-1.0
+  - typelibdir=/app/lib/girepository-1.0
+sources:
+  - type: archive
+    url: https://download.gnome.org/sources/libgee/0.20/libgee-0.20.5.tar.xz
+    sha256: 31863a8957d5a727f9067495cabf0a0889fa5d3d44626e54094331188d5c1518
+    x-checker-data:
+      type: gnome
+      name: libgee
+      stable-only: true
+cleanup:
+  - /lib/girepository*
+  - /share/gir*
+  - /share/vala

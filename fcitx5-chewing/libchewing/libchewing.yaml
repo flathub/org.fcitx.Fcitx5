@@ -1,0 +1,15 @@
+name: libchewing
+build-options:
+  prefix: /app/addons/Chewing
+  prepend-pkg-config-path: /app/addons/Chewing/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://github.com/chewing/libchewing/archive/v0.5.1/libchewing-0.5.1.tar.gz
+    sha256: b30a809123b6ba36283765b9337a98d695a292d361bd6f6bc74f03ac4f5772f8
+    x-checker-data:
+      type: anitya
+      project-id: 1577
+      stable-only: true
+      url-template: https://github.com/chewing/libchewing/archive/v$version/libchewing-$version.tar.gz
+cleanup:
+  - /addons/Chewing/share/info

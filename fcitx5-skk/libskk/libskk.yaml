@@ -1,0 +1,21 @@
+name: libskk
+build-options:
+  prefix: /app/addons/Skk
+  prepend-pkg-config-path: /app/addons/Skk/lib/pkgconfig
+sources:
+  - type: archive
+    url: https://github.com/ueno/libskk/releases/download/1.0.5/libskk-1.0.5.tar.xz
+    sha512: 6db675edba89b83da0c29afb42644c39bcb0ccfc47f067a18e0eda817df4f58a86c86e8747080018c132d8734754a6fd8a30fe6578050eb93ff636edeed534ab
+    x-checker-data:
+      type: anitya
+      project-id: 228903
+      stable-only: true
+      url-template: https://github.com/ueno/libskk/releases/download/$version/libskk-$version.tar.xz
+make-args:
+  - V=1
+cleanup:
+  - /addons/Skk/bin
+  - /addons/Skk/lib/girepository*
+  - /addons/Skk/share/gir*
+  - /addons/Skk/share/man
+  - /addons/Skk/share/vala

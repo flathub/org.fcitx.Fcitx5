@@ -1,0 +1,179 @@
+name: librime-data
+buildsystem: simple
+build-options:
+  prefix: /app/addons/Rime
+  prepend-path: /app/addons/Rime/bin
+  prepend-pkg-config-path: /app/addons/Rime/lib/pkgconfig
+  prepend-ld-library-path: /app/addons/Rime/lib
+build-commands:
+    # copy rime-essay
+  - install -Dm644 rime-essay/*.txt -t rime-data/
+    # copy rime-prelude
+  - install -Dm644 rime-prelude/*.yaml -t rime-data/
+    # copy all other rime schemas
+  - |
+    for _ime in rime-*; do
+      [ "$_ime" != "rime-data" ] &&
+        [ "$_ime" != "rime-essay" ] &&
+        [ "$_ime" != "rime-prelude" ] &&
+        install -Dm644 ${_ime}/*.yaml -t rime-data/
+    done
+    cd rime-data/
+    for _ime_schema in $(ls *.schema.yaml); do
+      rime_deployer --compile $_ime_schema
+    done
+  - |
+    install -Dm644 rime-data/*.{txt,yaml} -t ${FLATPAK_DEST}/addons/Rime/share/rime-data/
+    rm rime-data/build/*.txt
+    install -Dm644 rime-data/build/* -t ${FLATPAK_DEST}/addons/Rime/share/rime-data/build/
+sources:
+  - type: archive
+    url: https://github.com/rime/rime-essay/archive/8882482d07f38b5713ea3f49cb593eed94e671dd/rime-essay-8882482d07f38b5713ea3f49cb593eed94e671dd.tar.gz
+    sha256: 5a70366be097c7e23061384e412eb26326ce0c8de2fa1d357b2db18e1bba399f
+    dest: rime-essay
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-essay/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-essay/archive/$version/rime-essay-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-prelude/archive/4001edf96791bbb5663573ba79ba4b1e9c0b8626/rime-prelude-4001edf96791bbb5663573ba79ba4b1e9c0b8626.tar.gz
+    sha256: e538817fe0708ca01fca63b8155a5287476962eb20272dd2ed0a2c064cef5217
+    dest: rime-prelude
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-prelude/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-prelude/archive/$version/rime-prelude-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-terra-pinyin/archive/aefaf372b25febbf4d5f9443bd284d3dd6876085/rime-terra-pinyin-aefaf372b25febbf4d5f9443bd284d3dd6876085.tar.gz
+    sha256: fd034ca12c48cf1e6e3fae9a1d2187cd69347da8b78d15b8d910e97bfc58e18e
+    dest: rime-terra-pinyin
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-terra-pinyin/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-terra-pinyin/archive/$version/rime-terra-pinyin-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-stroke/archive/ea8576d1accd6fda339e96b415caadb56e2a07d1/rime-stroke-ea8576d1accd6fda339e96b415caadb56e2a07d1.tar.gz
+    sha256: 6ff57556a7a047514911226db9dd244f9517912573826c0d20b21456b98202be
+    dest: rime-stroke
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-stroke/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-stroke/archive/$version/rime-stroke-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-luna-pinyin/archive/6e677427764b542313858eaed22c2951d8ec22fe/rime-luna-pinyin-6e677427764b542313858eaed22c2951d8ec22fe.tar.gz
+    sha256: 85521a4eb79da65445d332fbe5001f85d06c7eb4894385f0b2ffa81c9a6441ef
+    dest: rime-luna-pinyin
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-luna-pinyin/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-luna-pinyin/archive/$version/rime-luna-pinyin-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-cangjie/archive/8dfad9e537f18821b71ba28773315d9c670ae245/rime-cangjie-8dfad9e537f18821b71ba28773315d9c670ae245.tar.gz
+    sha256: 5d0614fc0959938abd5d013bfa5182fb31cbc6e6a80a9e5e6e9da87e6dd992e8
+    dest: rime-cangjie
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-cangjie/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-cangjie/archive/$version/rime-cangjie-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-bopomofo/archive/c7618f4f5728e1634417e9d02ea50d82b71956ab/rime-bopomofo-c7618f4f5728e1634417e9d02ea50d82b71956ab.tar.gz
+    sha256: 37bc156bca8bca93b001b112ee440fc498207a4f6fbcaa2d2c306cfdd4560577
+    dest: rime-bopomofo
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-bopomofo/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-bopomofo/archive/$version/rime-bopomofo-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-cantonese/archive/b06434eb77f975d5ae9a9fddf866c9a78766dca5/rime-cantonese-b06434eb77f975d5ae9a9fddf866c9a78766dca5.tar.gz
+    sha256: 9fea8fd60a614e6ebef236035a356a524860c19af3ce5f9723f5ecf6b56fda34
+    dest: rime-cantonese
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-cantonese/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-cantonese/archive/$version/rime-cantonese-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-double-pinyin/archive/69bf85d4dfe8bac139c36abbd68d530b8b6622ea/rime-double-pinyin-69bf85d4dfe8bac139c36abbd68d530b8b6622ea.tar.gz
+    sha256: 41daacaf051c5c3c623170d73b2578bd8e70d0823fd1e3516af856283b7d9d48
+    dest: rime-double-pinyin
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-double-pinyin/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-double-pinyin/archive/$version/rime-double-pinyin-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-emoji/archive/ca91e504da44405b4d4c6ef35725af397bf08f0f/rime-emoji-ca91e504da44405b4d4c6ef35725af397bf08f0f.tar.gz
+    sha256: fe99194fb29ae2cde139c23509e997e7f0c70b6644889755798d0ddc40fea2a5
+    dest: rime-emoji
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-emoji/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-emoji/archive/$version/rime-emoji-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/CanCLID/rime-loengfan/archive/987ac95b02f957e8764a2f45222a4006c188ed50/rime-loengfan-987ac95b02f957e8764a2f45222a4006c188ed50.tar.gz
+    sha256: e9c82710e5386d2063c351314369aeb2d1d6505eb92f015e5483a0480412271b
+    dest: rime-loengfan
+    x-checker-data:
+      type: html
+      url: https://github.com/CanCLID/rime-loengfan/commits/main.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/CanCLID/rime-loengfan/archive/$version/rime-loengfan-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-pinyin-simp/archive/b0e84cda02c613ebdedc127a26131b3800f45a8e/rime-pinyin-simp-b0e84cda02c613ebdedc127a26131b3800f45a8e.tar.gz
+    sha256: 75b6ac2be6280bdeb87c8c5ffe35a8951bdc8417fc7b5e33642143bf82ba69c1
+    dest: rime-pinyin-simp
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-pinyin-simp/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-pinyin-simp/archive/$version/rime-pinyin-simp-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-quick/archive/3fe5911ba608cb2df1b6301b76ad1573bd482a76/rime-quick-3fe5911ba608cb2df1b6301b76ad1573bd482a76.tar.gz
+    sha256: 4ccfacbb4d23f0f6ffaba170e5a92c98313037a449d5d9a625f5bdd5dad9a120
+    dest: rime-quick
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-quick/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-quick/archive/$version/rime-quick-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-wubi/archive/f1876f08f1d4a9696395be0070c0e8e4353c44cb/rime-wubi-f1876f08f1d4a9696395be0070c0e8e4353c44cb.tar.gz
+    sha256: b5b2f49cd1111093a6cefe82e8dd77874a6a862f1214dde2e7f3ea901cc23969
+    dest: rime-wubi
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-wubi/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-wubi/archive/$version/rime-wubi-$version.tar.gz
+      sort-matches: false
+  - type: archive
+    url: https://github.com/rime/rime-wugniu/archive/abd1ee98efbf170258fcf43875c21a4259e00b61/rime-wugniu-abd1ee98efbf170258fcf43875c21a4259e00b61.tar.gz
+    sha256: 57cc982a42e4c7767dc81aff9b954f9c487a3688b3ae2061b004a77e43745362
+    dest: rime-wugniu
+    x-checker-data:
+      type: html
+      url: https://github.com/rime/rime-wugniu/commits/master.atom
+      version-pattern: <id>.*Commit/(.*)</id>
+      url-template: https://github.com/rime/rime-wugniu/archive/$version/rime-wugniu-$version.tar.gz
+      sort-matches: false

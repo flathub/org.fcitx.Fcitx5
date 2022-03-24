@@ -1,0 +1,20 @@
+name: fcitx5-hangul
+buildsystem: cmake-ninja
+build-options:
+  prefix: /app/addons/Hangul
+  prepend-pkg-config-path: /app/addons/Hangul/lib/pkgconfig
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/fcitx/fcitx5-hangul/archive/5.0.8/fcitx5-hangul-5.0.8.tar.gz
+    sha256: 4815f6193b2356ce71f9ccc71a6ab6d2e4c4db33a2b07bab221594b25723090b
+    x-checker-data:
+      type: anitya
+      project-id: 174360
+      stable-only: true
+      url-template: https://github.com/fcitx/fcitx5-hangul/archive/$version/fcitx5-hangul-$version.tar.gz
+  - type: file
+    path: ../install_icons
+modules:
+  - libhangul/libhangul.yaml
