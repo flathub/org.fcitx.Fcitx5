@@ -43,18 +43,13 @@ modules:
       - -DUSE_FLATPAK_ICON=On
     sources:
       - type: archive
-        url: https://github.com/fcitx/fcitx5/archive/5.0.15/fcitx5-5.0.15.tar.gz
-        sha256: 11d077b6f92d0279cae93e889a4c9efe7408e50420d17a90c6c20322b05c27f4
+        url: https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-5.0.15_dict.tar.xz
+        sha256: f2ee4f946a363bfe806ba9a6e9d610a45eb4389603a473d1e8b3d9fbada551e5
         x-checker-data:
           type: anitya
           project-id: 138232
           stable-only: true
-          url-template: https://github.com/fcitx/fcitx5/archive/$version/fcitx5-$version.tar.gz
-      - type: file
-        url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
-        sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
-        dest: src/modules/spell/dict
-        path: en_dict-20121020.tar.gz
+          url-template: https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${version}_dict.tar.xz
       - type: file
         path: fcitx5.sh
     post-install:
