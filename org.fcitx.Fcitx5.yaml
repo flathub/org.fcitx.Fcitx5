@@ -179,6 +179,10 @@ modules:
               project-id: 13423
               stable-only: true
               url-template: https://github.com/fujiwarat/cldr-emoji-annotation/releases/download/$version/cldr-emoji-annotation-$version.tar.gz
+          - type: shell
+            commands:
+              - sed '/^pkgconfigdir.*=/ s/datadir/libdir/' -i Makefile.am
+              - autoreconf -fiv
   - name: fcitx5-qt
     buildsystem: cmake-ninja
     config-opts:
