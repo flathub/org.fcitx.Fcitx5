@@ -9,13 +9,13 @@ post-install:
   - ./install_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-rime/archive/5.0.12/fcitx5-rime-5.0.12.tar.gz
-    sha256: 549da0d08681ada3cb4148a03e867764d16a514eb021c9bbdd8a2336f2626556
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-rime/fcitx5-rime-5.0.12.tar.xz
+    sha256: 8b7e4945fc43c2815af2e2229ce71e19959ce24cdeffe92b42ae18522410eb12
     x-checker-data:
-      type: anitya
-      project-id: 138239
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-rime/archive/$version/fcitx5-rime-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-rime/
+      version-pattern: fcitx5-rime-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-rime/fcitx5-rime-$version.tar.xz
   - type: file
     path: ../install_icons
 modules:

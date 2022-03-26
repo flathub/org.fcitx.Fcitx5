@@ -5,12 +5,12 @@ build-options:
   prepend-pkg-config-path: /app/addons/Lua/lib/pkgconfig
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-lua/archive/5.0.7/fcitx5-lua-5.0.7.tar.gz
-    sha256: cb0cf1e5fd3d4dd906e482ae0cc50944e804b4ce10515968334f9530dbdfa3b4
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-lua/fcitx5-lua-5.0.7.tar.xz
+    sha256: bff8e5143912b212726b2bab8cf62bbd11ca4f3837b65cb8ce94a7c56fc15f2d
     x-checker-data:
-      type: anitya
-      project-id: 138242
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-lua/archive/$version/fcitx5-lua-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-lua/
+      version-pattern: fcitx5-lua-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-lua/fcitx5-lua-$version.tar.xz
 modules:
   - lua/lua.yaml

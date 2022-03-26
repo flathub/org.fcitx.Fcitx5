@@ -7,12 +7,12 @@ post-install:
   - ./install_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-sayura/archive/5.0.6/fcitx5-sayura-5.0.6.tar.gz
-    sha256: d51b821f437a275d0bf13a8efb07d7195886080d229411da1df3c2acb23acf8a
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-sayura/fcitx5-sayura-5.0.6.tar.xz
+    sha256: 509f0f52019e2464530d857883b9b8f5e485a1347f6b6e7cb8f4138392fb2b0e
     x-checker-data:
-      type: anitya
-      project-id: 174361
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-sayura/archive/$version/fcitx5-sayura-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-sayura/
+      version-pattern: fcitx5-sayura-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-sayura/fcitx5-sayura-$version.tar.xz
   - type: file
     path: ../install_icons

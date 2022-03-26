@@ -9,12 +9,12 @@ post-install:
   - ./install_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-table-extra/archive/5.0.9/fcitx5-table-extra-5.0.9.tar.gz
-    sha256: 8bf92507dabf396303e488dd5c527ade63c2f221637ed6baf4535834855182b5
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-table-extra/fcitx5-table-extra-5.0.9.tar.xz
+    sha256: cf791178f5871f58bf008042359ffd55e8cf11fbc4c74e77e33debe7f3ddbce4
     x-checker-data:
-      type: anitya
-      project-id: 174362
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-table-extra/archive/$version/fcitx5-table-extra-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-table-extra/
+      version-pattern: fcitx5-table-extra-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-table-extra/fcitx5-table-extra-$version.tar.xz
   - type: file
     path: ../install_icons

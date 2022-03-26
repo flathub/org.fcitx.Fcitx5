@@ -154,9 +154,9 @@ modules:
         url: https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-5.0.15_dict.tar.xz
         sha256: f2ee4f946a363bfe806ba9a6e9d610a45eb4389603a473d1e8b3d9fbada551e5
         x-checker-data:
-          type: anitya
-          project-id: 138232
-          stable-only: true
+          type: html
+          url: https://download.fcitx-im.org/fcitx5/fcitx5/
+          version-pattern: fcitx5-([\d\.-]+)_dict.tar.xz
           url-template: https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${version}_dict.tar.xz
       - type: file
         path: fcitx5.sh
@@ -190,25 +190,25 @@ modules:
       - -DCMAKE_INSTALL_QT5PLUGINDIR=/app/lib/plugins
     sources:
       - type: archive
-        url: https://github.com/fcitx/fcitx5-qt/archive/5.0.11/fcitx5-qt-5.0.11.tar.gz
-        sha256: 426748e8e6514d48e0bbbb0bb85a76e786db1dd4a7cb8ed276c0d23179642882
+        url: https://download.fcitx-im.org/fcitx5/fcitx5-qt/fcitx5-qt-5.0.11.tar.xz
+        sha256: 7196798d4c6f9305c028dab30a31eb64566b9b47b1cb916518d33f3a0f053d62
         x-checker-data:
-          type: anitya
-          project-id: 138234
-          stable-only: true
-          url-template: https://github.com/fcitx/fcitx5-qt/archive/$version/fcitx5-qt-$version.tar.gz
+          type: html
+          url: https://download.fcitx-im.org/fcitx5/fcitx5-qt/
+          version-pattern: fcitx5-qt-([\d\.-]+).tar.xz
+          url-template: https://download.fcitx-im.org/fcitx5/fcitx5-qt/fcitx5-qt-$version.tar.xz
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
     sources:
       - type: archive
-        url: https://github.com/fcitx/fcitx5-configtool/archive/5.0.12/fcitx5-configtool-5.0.12.tar.gz
-        sha256: 41216ca8d15b8cfd1e4a2aa64175650093d6daa34db7da8d3eb15b96023d30b8
+        url: https://download.fcitx-im.org/fcitx5/fcitx5-configtool/fcitx5-configtool-5.0.12.tar.xz
+        sha256: 293da52dbac987a3c4880433a4a93bf8b3b45e2ac3d77cb025f76dc859302a1b
         x-checker-data:
-          type: anitya
-          project-id: 138233
-          stable-only: true
-          url-template: https://github.com/fcitx/fcitx5-configtool/archive/$version/fcitx5-configtool-$version.tar.gz
+          type: html
+          url: https://download.fcitx-im.org/fcitx5/fcitx5-configtool/
+          version-pattern: fcitx5-configtool-([\d\.-]+).tar.xz
+          url-template: https://download.fcitx-im.org/fcitx5/fcitx5-configtool/fcitx5-configtool-$version.tar.xz
 
   # extensions dependencies
   - boost/boost.yaml

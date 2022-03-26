@@ -7,13 +7,13 @@ post-install:
   - ./install_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-chewing/archive/5.0.10/fcitx5-chewing-5.0.10.tar.gz
-    sha256: 5f4802998e33649bd1c0b291be46ba4778e48dfc1067ced360b1241d73be263d
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-chewing/fcitx5-chewing-5.0.10.tar.xz
+    sha256: 70843186dfa571eef674dde049abf2cbf16fbc9434dfb3060986bcc92cc4dadd
     x-checker-data:
-      type: anitya
-      project-id: 174357
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-chewing/archive/$version/fcitx5-chewing-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-chewing/
+      version-pattern: fcitx5-chewing-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-chewing/fcitx5-chewing-$version.tar.xz
   - type: file
     path: ../install_icons
 modules:

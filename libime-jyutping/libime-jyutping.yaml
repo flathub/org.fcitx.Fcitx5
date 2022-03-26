@@ -14,9 +14,9 @@ sources:
     url: https://download.fcitx-im.org/fcitx5/libime-jyutping/libime-jyutping-1.0.3_dict.tar.xz
     sha256: a8a07ff447cb3a06e680d5627b9ea6ba5d31a02319e8d4fb4eab33e9feff017e
     x-checker-data:
-      type: anitya
-      project-id: 242972
-      stable-only: true
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/libime-jyutping/
+      version-pattern: libime-jyutping-([\d\.-]+)_dict.tar.xz
       url-template: https://download.fcitx-im.org/fcitx5/libime-jyutping/libime-jyutping-${version}_dict.tar.xz
   - type: patch
     path: 0001-Set-LibIME-data-dirs-after-loading-LibIMECore.patch

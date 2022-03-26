@@ -5,13 +5,13 @@ build-options:
   prepend-pkg-config-path: /app/addons/M17N/lib/pkgconfig
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-m17n/archive/5.0.8/fcitx5-m17n-5.0.8.tar.gz
-    sha256: af3e77e49a7b373db1d49002679d95853c5a05e800177893e64ae83ba9794441
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-m17n/fcitx5-m17n-5.0.8.tar.xz
+    sha256: 81f662b99dd4580ab9265b8c30f72c980dea698d83d9bec6b790a8c7d40da348
     x-checker-data:
-      type: anitya
-      project-id: 174359
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-m17n/archive/$version/fcitx5-m17n-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-m17n/
+      version-pattern: fcitx5-m17n-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-m17n/fcitx5-m17n-$version.tar.xz
 modules:
   - m17n-lib/m17n-lib.yaml
   - m17n-db/m17n-db.yaml

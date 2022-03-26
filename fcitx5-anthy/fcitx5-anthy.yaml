@@ -7,13 +7,13 @@ post-install:
   - ./install_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-anthy/archive/5.0.10/fcitx5-anthy-5.0.10.tar.gz
-    sha256: 0a7667930c2fc2efa991060d728f9002479185ee186b91c7745323131f65cf58
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-anthy/fcitx5-anthy-5.0.10.tar.xz
+    sha256: 1dab20b65c65059f707d64cbf1cd0f98a88016161240ad514b811a161bfed7fd
     x-checker-data:
-      type: anitya
-      project-id: 174357
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-anthy/archive/$version/fcitx5-anthy-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-anthy/
+      version-pattern: fcitx5-anthy-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-anthy/fcitx5-anthy-$version.tar.xz
   - type: file
     path: ../install_icons
 modules:

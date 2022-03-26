@@ -9,12 +9,12 @@ post-install:
   - ./install_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-unikey/archive/5.0.9/fcitx5-unikey-5.0.9.tar.gz
-    sha256: e16fc7ef34716f634163af82e999f0f260196fbf4bbefaa7a382a5d3864c1073
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-unikey/fcitx5-unikey-5.0.9.tar.xz
+    sha256: a72d59e21ddde6ccfa5f66accd9d763ded7c8210dbb19a99435aa35b4ac7d5ed
     x-checker-data:
-      type: anitya
-      project-id: 180082
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-unikey/archive/$version/fcitx5-unikey-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-unikey/
+      version-pattern: fcitx5-unikey-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-unikey/fcitx5-unikey-$version.tar.xz
   - type: file
     path: ../install_icons

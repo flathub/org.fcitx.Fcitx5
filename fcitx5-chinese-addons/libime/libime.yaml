@@ -8,7 +8,7 @@ sources:
     url: https://download.fcitx-im.org/fcitx5/libime/libime-1.0.11_dict.tar.xz
     sha256: 759de26bab4d758ed42d96e7b09c4208610f4574fa81a53cca1bf958f57bb927
     x-checker-data:
-      type: anitya
-      project-id: 138236
-      stable-only: true
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/libime/
+      version-pattern: libime-([\d\.-]+)_dict.tar.xz
       url-template: https://download.fcitx-im.org/fcitx5/libime/libime-${version}_dict.tar.xz

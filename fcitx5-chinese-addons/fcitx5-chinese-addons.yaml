@@ -17,9 +17,9 @@ sources:
     url: https://download.fcitx-im.org/fcitx5/fcitx5-chinese-addons/fcitx5-chinese-addons-5.0.12_dict.tar.xz
     sha256: 66baebe7cf06cf73a52bbd96aad46e6d6ebd0c4b126b8ee2da7124bcdcb5207c
     x-checker-data:
-      type: anitya
-      project-id: 138238
-      stable-only: true
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-chinese-addons/
+      version-pattern: fcitx5-chinese-addons-([\d\.-]+)_dict.tar.xz
       url-template: https://download.fcitx-im.org/fcitx5/fcitx5-chinese-addons/fcitx5-chinese-addons-${version}_dict.tar.xz
   - type: file
     path: ../install_icons

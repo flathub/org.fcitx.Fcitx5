@@ -9,13 +9,13 @@ post-install:
   - ./install_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/fcitx5-skk/archive/5.0.11/fcitx5-skk-5.0.11.tar.gz
-    sha256: d5f2de809ceb19f3e3796afa9e2616d453ae85ec6299874cc8c86ec76951a9c5
+    url: https://download.fcitx-im.org/fcitx5/fcitx5-skk/fcitx5-skk-5.0.11.tar.xz
+    sha256: 46654465f348ef01a9e15d9b89c7c15e7def96c9840f441dac3a17d9f3926a2a
     x-checker-data:
-      type: anitya
-      project-id: 138240
-      stable-only: true
-      url-template: https://github.com/fcitx/fcitx5-skk/archive/$version/fcitx5-skk-$version.tar.gz
+      type: html
+      url: https://download.fcitx-im.org/fcitx5/fcitx5-skk/
+      version-pattern: fcitx5-skk-([\d\.-]+).tar.xz
+      url-template: https://download.fcitx-im.org/fcitx5/fcitx5-skk/fcitx5-skk-$version.tar.xz
   - type: file
     path: ../install_icons
 modules:
