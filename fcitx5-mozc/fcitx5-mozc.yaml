@@ -17,8 +17,8 @@ post-install:
   - PREFIX=${FLATPAK_DEST} ../scripts/install_fcitx5_icons
 sources:
   - type: archive
-    url: https://github.com/fcitx/mozc/archive/1e52f804db1f0218ebdd7e6a672df82332a53a3a/mozc-1e52f804db1f0218ebdd7e6a672df82332a53a3a.tar.gz
-    sha256: 5824c5175a00b4f78d6efec77e8eed281965c6f09c61dc5519d7486d50638f0e
+    url: https://github.com/fcitx/mozc/archive/d5bbd7624bc43f921d4f726cb79bfc0bdf395cdd/mozc-d5bbd7624bc43f921d4f726cb79bfc0bdf395cdd.tar.gz
+    sha256: d63cdf0753a65f86a0623998a2a8be8b2e29d6fd303c028ffd6eec529876d49b
     x-checker-data:
       type: html
       url: https://github.com/fcitx/mozc/commits/fcitx.atom
