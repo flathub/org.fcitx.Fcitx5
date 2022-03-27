@@ -6,12 +6,16 @@ sources:
   - type: archive
     url: https://github.com/ueno/libkkc/releases/download/v0.3.5/libkkc-data-0.2.7.tar.xz
     sha256: 9e678755a030043da68e37a4049aa296c296869ff1fb9e6c70026b2541595b99
-    # TODO: fix f-e-d-c
-    #x-checker-data:
-    #  type: anitya
-    #  project-id: 228900
-    #  stable-only: true
-    #  url-template: https://github.com/ueno/libkkc/releases/download/v$version/libkkc-data-$version.tar.xz
-  - type: patch
-    path: libkkc-python3.patch
-    strip-components: 4
+    dest: libkkc-data-dist
+  - type: shell
+    commands:
+      - cp -R ${FLATPAK_DEST}/addons/Kkc/share/libkkc/templates/libkkc-data/* ./
+      - ln -s {../../../libkkc-data-dist/,}data/models/text3/data.arpa
+      - sed -e 's|@PACKAGE_NAME[@]|libkkc-data|g'
+        -e 's|@PACKAGE_VERSION[@]|'$(awk '/^opt_package_version=/{ sub(/.*=/, ""); print}' ${FLATPAK_DEST}/addons/Kkc/bin/kkc-package-data)'|g'
+        -e 's|@PACKAGE_BUGREPORT[@]|ueno@gnu.org|g'
+        configure.ac.in > configure.ac
+      - cp data/models/Makefile.{sorted3,am}
+      - touch AUTHORS ChangeLog NEWS README
+      - mkdir m4
+      - autoreconf -fiv
