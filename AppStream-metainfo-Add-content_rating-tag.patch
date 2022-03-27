@@ -1,0 +1,26 @@
+From 358f6126405d07a6fc183a6f178a731538533229 Mon Sep 17 00:00:00 2001
+From: tinywrkb <tinywrkb@gmail.com>
+Date: Sun, 27 Mar 2022 03:32:36 +0300
+Subject: [PATCH] AppStream metainfo: Add content_rating tag
+
+The content_rating tag is needed in order to pass validation with
+appstream-util (appstream-glib).
+Flathub CI builds are failing without this.
+The tag is empty as no age restrictions are needed.
+---
+ data/org.fcitx.Fcitx5.metainfo.xml.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/org.fcitx.Fcitx5.metainfo.xml.in b/data/org.fcitx.Fcitx5.metainfo.xml.in
+index dc4f7f3..3ea9974 100644
+--- a/data/org.fcitx.Fcitx5.metainfo.xml.in
++++ b/data/org.fcitx.Fcitx5.metainfo.xml.in
+@@ -43,4 +43,5 @@
+     <release version="5.0.0" date="2020-10-30"/>
+   </releases>
+   <launchable type="desktop-id">org.fcitx.Fcitx5.desktop</launchable>
++  <content_rating type="oars-1.1"/>
+ </component>
+-- 
+2.35.1
+

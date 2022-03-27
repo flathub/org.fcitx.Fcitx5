@@ -160,6 +160,8 @@ modules:
           url-template: https://download.fcitx-im.org/fcitx5/fcitx5/fcitx5-${version}_dict.tar.xz
       - type: file
         path: fcitx5.sh
+      - type: patch
+        path: AppStream-metainfo-Add-content_rating-tag.patch
     post-install:
       - install -d /app/addons
       - mv /app/bin/fcitx5{,-bin}
