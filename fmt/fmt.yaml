@@ -1,7 +1,9 @@
 name: fmt
 buildsystem: cmake-ninja
 config-opts:
-  - -DFMT_TEST=Off
+  - -DBUILD_SHARED_LIBS=ON
+  - -DCMAKE_BUILD_TYPE=None
+  - -DFMT_TEST=OFF
 sources:
   - type: archive
     url: https://github.com/fmtlib/fmt/releases/download/8.1.1/fmt-8.1.1.zip
@@ -12,4 +14,4 @@ sources:
       stable-only: true
       url-template: https://github.com/fmtlib/fmt/releases/download/$version/fmt-$version.zip
 cleanup:
-  - '*'
+  - /share/doc
