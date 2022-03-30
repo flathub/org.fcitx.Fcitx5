@@ -1,0 +1,87 @@
+From 5af0317c3b7d93d6da31a2138532660bdf3a4e44 Mon Sep 17 00:00:00 2001
+From: tinywrkb <tinywrkb@gmail.com>
+Date: Wed, 30 Mar 2022 23:46:34 +0300
+Subject: [PATCH] Allow disabling test target
+
+---
+ CMakeLists.txt     |  2 ++
+ src/CMakeLists.txt | 48 ++++++++++++++++++++++++----------------------
+ 2 files changed, 27 insertions(+), 23 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d5019c4..a5abf19 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,8 @@ include(GNUInstallDirs)
+ include(ECMSetupVersion)
+ include(ECMUninstallTarget)
+ 
++option(ENABLE_TEST "Build Test" On)
++
+ find_package(fmt REQUIRED)
+ find_package(Gettext REQUIRED)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f975442..f5ee83c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -49,31 +49,33 @@ configure_file(mcbopomofo.conf.in.in mcbopomofo.conf.in)
+ fcitx5_translate_desktop_file("${CMAKE_CURRENT_BINARY_DIR}/mcbopomofo.conf.in" mcbopomofo.conf)
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/mcbopomofo.conf" DESTINATION "${FCITX_INSTALL_PKGDATADIR}/inputmethod")
+ 
+-# Let CMake fetch Google Test for us.
+-# https://github.com/google/googletest/tree/main/googletest#incorporating-into-an-existing-cmake-project
+-include(FetchContent)
++if (ENABLE_TEST)
++    # Let CMake fetch Google Test for us.
++    # https://github.com/google/googletest/tree/main/googletest#incorporating-into-an-existing-cmake-project
++    include(FetchContent)
+ 
+-FetchContent_Declare(
+-        googletest
+-        # Specify the commit you depend on and update it regularly.
+-        URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+-)
+-# For Windows: Prevent overriding the parent project's compiler/linker settings
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-FetchContent_MakeAvailable(googletest)
++    FetchContent_Declare(
++            googletest
++            # Specify the commit you depend on and update it regularly.
++            URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
++    )
++    # For Windows: Prevent overriding the parent project's compiler/linker settings
++    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
++    FetchContent_MakeAvailable(googletest)
+ 
+-include(GoogleTest)
++    include(GoogleTest)
+ 
+-# Test target declarations.
+-add_executable(McBopomofoTest
+-        KeyHandlerTest.cpp)
+-target_link_libraries(McBopomofoTest PRIVATE Fcitx5::Core gtest_main McBopomofoLib)
+-target_include_directories(McBopomofoTest PRIVATE Fcitx5::Core GoogleTest)
++    # Test target declarations.
++    add_executable(McBopomofoTest
++            KeyHandlerTest.cpp)
++    target_link_libraries(McBopomofoTest PRIVATE Fcitx5::Core gtest_main McBopomofoLib)
++    target_include_directories(McBopomofoTest PRIVATE Fcitx5::Core GoogleTest)
+ 
+-gtest_discover_tests(McBopomofoTest)
++    gtest_discover_tests(McBopomofoTest)
+ 
+-add_custom_target(
+-        runTest
+-        COMMAND ${CMAKE_CURRENT_BINARY_DIR}/McBopomofoTest
+-)
+-add_dependencies(runTest McBopomofoTest)
++    add_custom_target(
++            runTest
++            COMMAND ${CMAKE_CURRENT_BINARY_DIR}/McBopomofoTest
++    )
++    add_dependencies(runTest McBopomofoTest)
++endif ()
+-- 
+2.35.1
+

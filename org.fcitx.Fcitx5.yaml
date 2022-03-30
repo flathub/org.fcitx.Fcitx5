@@ -68,6 +68,12 @@ add-extensions:
     no-autodownload: true
     add-ld-path: lib
     autodelete: true
+  org.fcitx.Fcitx5.Addon.McBopomofo:
+    directory: addons/McBopomofo
+    bundle: true
+    no-autodownload: true
+    add-ld-path: lib
+    autodelete: true
   org.fcitx.Fcitx5.Addon.Mozc:
     directory: addons/Mozc
     bundle: true
@@ -229,6 +235,7 @@ modules:
   - fcitx5-kkc/fcitx5-kkc.yaml
   - fcitx5-libthai/fcitx5-libthai.yaml
   - fcitx5-m17n/fcitx5-m17n.yaml
+  - fcitx5-mcbopomofo/fcitx5-mcbopomofo.yaml
   - fcitx5-mozc/fcitx5-mozc.yaml
   - fcitx5-rime/fcitx5-rime.yaml
   - fcitx5-sayura/fcitx5-sayura.yaml

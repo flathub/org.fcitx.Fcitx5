@@ -1,0 +1,22 @@
+name: fcitx5-mcbopomofo
+buildsystem: cmake
+build-options:
+  prefix: /app/addons/McBopomofo
+  prepend-pkg-config-path: /app/addons/McBopomofo/lib/pkgconfig
+config-opts:
+  - -DENABLE_TEST=OFF
+post-install:
+  - ./install_icons
+sources:
+  - type: archive
+    url: https://github.com/openvanilla/fcitx5-mcbopomofo/archive/2.2.1/fcitx5-mcbopomofo-2.2.1.tar.gz
+    sha256: 6fa1a6da3c8c8ca26254e48c376fd94911f99bf8f3c9d4a317146f011ac6900d
+    x-checker-data:
+      type: anitya
+      project-id: 243006
+      stable-only: true
+      url-template: https://github.com/openvanilla/fcitx5-mcbopomofo/archive/$version/fcitx5-mcbopomofo-$version.tar.gz
+  - type: patch
+    path: Allow-disabling-test-target.patch
+  - type: file
+    path: ../install_icons
