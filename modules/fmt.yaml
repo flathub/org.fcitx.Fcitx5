@@ -7,4 +7,4 @@ sources:
     url: https://github.com/fmtlib/fmt
     branch: 7.1.2
 cleanup:
-  - "*"
+  - '*'
