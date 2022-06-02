@@ -1,4 +1,5 @@
 app-id: org.fcitx.Fcitx5
+branch: stable
 base: io.qt.qtwebkit.BaseApp
 base-version: 5.15-21.08
 runtime: org.kde.Platform
@@ -44,7 +45,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.0.16
+        tag: 5.0.17
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -63,7 +64,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
-        tag: 5.0.12
+        tag: 5.0.13
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
@@ -126,10 +127,9 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: db3ea302cca6b7d7a2144c2d8357778d2ad31744
+        commit: 3f644a45d22c2b4da0d2bda7c18c7ea8d3565402
       - type: file
         path: install_icons
     build-commands:
       - ./install_icons
       - cd mozc/src && PREFIX=${FLATPAK_DEST} ../scripts/install_fcitx5_icons
-branch: stable
