@@ -127,7 +127,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 3f644a45d22c2b4da0d2bda7c18c7ea8d3565402
+        commit: b5e458faaefe56f16f1cc05fb5068935b80c162c
       - type: file
         path: install_icons
     build-commands:
