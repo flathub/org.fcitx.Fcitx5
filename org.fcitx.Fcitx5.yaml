@@ -45,7 +45,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.0.17
+        tag: 5.0.18
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -64,70 +64,74 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
-        tag: 5.0.13
+        tag: 5.0.14
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-configtool
-        tag: 5.0.13
+        tag: 5.0.14
   - name: fcitx5-all-icons
     buildsystem: simple
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-anthy
         dest: fcitx5-anthy
-        tag: 5.0.11
+        tag: 5.0.12
+      - type: git
+        url: https://github.com/fcitx/fcitx5-bamboo
+        dest: fcitx5-bamboo
+        tag: 1.0.0
       - type: git
         url: https://github.com/fcitx/fcitx5-chewing
         dest: fcitx5-chewing
-        tag: 5.0.11
+        tag: 5.0.12
       - type: git
         url: https://github.com/fcitx/fcitx5-chinese-addons
         dest: fcitx5-chinese-addons
-        tag: 5.0.13
+        tag: 5.0.14
       - type: git
         url: https://github.com/fcitx/fcitx5-hangul
         dest: fcitx5-hangul
-        tag: 5.0.9
+        tag: 5.0.10
       - type: git
         url: https://github.com/fcitx/fcitx5-kkc
         dest: fcitx5-kkc
-        tag: 5.0.9
+        tag: 5.0.10
       - type: git
         url: https://github.com/fcitx/fcitx5-rime
         dest: fcitx5-rime
-        tag: 5.0.13
+        tag: 5.0.14
       - type: git
         url: https://github.com/fcitx/fcitx5-sayura
         dest: fcitx5-sayura
-        tag: 5.0.7
+        tag: 5.0.8
       - type: git
         url: https://github.com/fcitx/fcitx5-skk
         dest: fcitx5-skk
-        tag: 5.0.12
+        tag: 5.0.13
       - type: git
         url: https://github.com/fcitx/fcitx5-table-extra
         dest: fcitx5-table-extra
-        tag: 5.0.10
+        tag: 5.0.11
       - type: git
         url: https://github.com/fcitx/fcitx5-table-other
         dest: fcitx5-table-other
-        tag: 5.0.9
+        tag: 5.0.10
       - type: git
         url: https://github.com/fcitx/fcitx5-unikey
         dest: fcitx5-unikey
-        tag: 5.0.10
+        tag: 5.0.11
       - type: git
         url: https://github.com/fcitx/fcitx5-zhuyin
         dest: fcitx5-zhuyin
-        tag: 5.0.9
+        tag: 5.0.10
       - type: git
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: b5e458faaefe56f16f1cc05fb5068935b80c162c
+        commit: 9a44f2267096458bb09fb0cae5cc561e12ff93c1
       - type: file
         path: install_icons
     build-commands:
