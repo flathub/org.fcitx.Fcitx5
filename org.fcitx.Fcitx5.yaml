@@ -49,7 +49,7 @@ modules:
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
-        dest: src/modules/spell/dict
+        dest: src/modules/spell
       - type: file
         path: fcitx5.sh
     post-install:
@@ -131,7 +131,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 9a44f2267096458bb09fb0cae5cc561e12ff93c1
+        commit: ed9c27947fd3ce3aa2326e40acce785fd85eb7a2
       - type: file
         path: install_icons
     build-commands:
