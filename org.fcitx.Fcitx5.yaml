@@ -1,9 +1,9 @@
 app-id: org.fcitx.Fcitx5
 branch: stable
 base: io.qt.qtwebkit.BaseApp
-base-version: 5.15-21.08
+base-version: 5.15-22.08
 runtime: org.kde.Platform
-runtime-version: 5.15-21.08
+runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 add-extensions:
   org.fcitx.Fcitx5.Addon:
@@ -18,24 +18,20 @@ command: fcitx5
 finish-args:
   - --socket=session-bus
   - --socket=x11
+  - --share=ipc
   - --socket=wayland
   - --share=network
-  - --filesystem=xdg-config/fcitx5:create
-  - --filesystem=xdg-data/fcitx5:create
+  - --filesystem=xdg-config/kxkbrc:rw
   - --filesystem=xdg-config/fontconfig:ro
   - --filesystem=xdg-config/fcitx:create
   - --filesystem=xdg-config/ibus:create
+  - --filesystem=xdg-cache/ibus:create
   - --device=dri
 modules:
   - modules/fmt.yaml
   - modules/xcb-imdkit.yaml
   - modules/libevent.yaml
   - modules/json-c.yaml
-  - name: cldr-emoji-annotation
-    sources:
-      - type: git
-        url: https://github.com/fujiwarat/cldr-emoji-annotation/
-        branch: 37.0_13.0_0_2
   - name: fcitx5
     buildsystem: cmake-ninja
     config-opts:
@@ -45,7 +41,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.0.19
+        tag: 5.1.0
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -64,74 +60,74 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
-        tag: 5.0.15
+        tag: 5.1.0
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-configtool
-        tag: 5.0.15
+        tag: 5.1.0
   - name: fcitx5-all-icons
     buildsystem: simple
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-anthy
         dest: fcitx5-anthy
-        tag: 5.0.12
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-bamboo
         dest: fcitx5-bamboo
-        tag: 1.0.1
+        tag: 1.0.4
       - type: git
         url: https://github.com/fcitx/fcitx5-chewing
         dest: fcitx5-chewing
-        tag: 5.0.12
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-chinese-addons
         dest: fcitx5-chinese-addons
-        tag: 5.0.15
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-hangul
         dest: fcitx5-hangul
-        tag: 5.0.10
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-kkc
         dest: fcitx5-kkc
-        tag: 5.0.10
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-rime
         dest: fcitx5-rime
-        tag: 5.0.14
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-sayura
         dest: fcitx5-sayura
-        tag: 5.0.8
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-skk
         dest: fcitx5-skk
-        tag: 5.0.13
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-table-extra
         dest: fcitx5-table-extra
-        tag: 5.0.11
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-table-other
         dest: fcitx5-table-other
-        tag: 5.0.10
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-unikey
         dest: fcitx5-unikey
-        tag: 5.0.11
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/fcitx5-zhuyin
         dest: fcitx5-zhuyin
-        tag: 5.0.10
+        tag: 5.1.0
       - type: git
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: ed9c27947fd3ce3aa2326e40acce785fd85eb7a2
+        commit: 198608e08393dd26a81cd091e4916dfbc4196e5e
       - type: file
         path: install_icons
     build-commands:
