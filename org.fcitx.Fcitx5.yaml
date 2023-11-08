@@ -42,7 +42,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.1.4
+        tag: 5.1.5
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -131,7 +131,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: db55398c18eedc0b7961cec03b4962514564520d
+        commit: 835de48f0afbf16ee03f6576b091a5e019487df3
       - type: file
         path: install_icons
     build-commands:
