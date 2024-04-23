@@ -20,6 +20,7 @@ finish-args:
   - --socket=x11
   - --share=ipc
   - --socket=wayland
+  - --socket=inherit-wayland-socket
   - --share=network
   - --filesystem=xdg-config/kxkbrc:rw
   - --filesystem=xdg-config/fontconfig:ro
@@ -139,7 +140,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 05fa21362019671046a7bd7c366b21123a7d0bde
+        commit: 40cd09fcbe8b945d21e5df9cb7b30e0cf77efd68
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: 2.5.2
