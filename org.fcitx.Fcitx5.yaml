@@ -16,10 +16,8 @@ add-extensions:
 separate-locales: false
 command: fcitx5
 finish-args:
-  - --socket=session-bus
-  - --socket=x11
+  - --metadata=Context=sockets=x11;wayland;session-bus;inherit-wayland-socket;
   - --share=ipc
-  - --socket=wayland
   - --share=network
   - --filesystem=xdg-config/kxkbrc:rw
   - --filesystem=xdg-config/fontconfig:ro
@@ -91,7 +89,7 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-chewing
         dest: fcitx5-chewing
-        tag: 5.1.2
+        tag: 5.1.3
       - type: git
         url: https://github.com/fcitx/fcitx5-chinese-addons
         dest: fcitx5-chinese-addons
@@ -136,7 +134,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: c8938c996e2bbab7132a51eb125dbe9d3d5eb018
+        commit: c0bdc91234eb5afe29798876790d599f4d99f6e4
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: 2.5.2
