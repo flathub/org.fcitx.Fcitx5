@@ -48,6 +48,12 @@ modules:
         dest: src/modules/spell
       - type: file
         path: fcitx5.sh
+      - type: patch
+        path: cp-fb9142925cfbe27b70f181ce70e68df9b13f3152.patch
+        use-git: true
+      - type: patch
+        path: cp-45c024abc26dcfe07fc688a6b022e484b8275117.patch
+        use-git: true
     post-install:
       - install -d /app/addons
       - mv /app/bin/fcitx5{,-bin}
@@ -134,7 +140,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 8acc79f6e82dedaa5515da751fd7277e677ea02f
+        commit: 98b63d4a413af1aa342a2c0f61c01822a18fdbf5
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: 2.5.2
