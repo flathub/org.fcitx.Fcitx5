@@ -63,7 +63,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
-        tag: 5.1.7
+        tag: 5.1.8
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
@@ -134,7 +134,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 0cbb8f18e8df5eb4e110bab850cebc1f57811f16
+        commit: 815cc6669489fd87c4235fc25245c8d230dad3b2
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: 2.5.2
