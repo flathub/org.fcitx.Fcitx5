@@ -1,9 +1,9 @@
 app-id: org.fcitx.Fcitx5
 branch: stable
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.6'
+base-version: '6.8'
 runtime: org.kde.Platform
-runtime-version: '6.6'
+runtime-version: '6.8'
 sdk: org.kde.Sdk
 add-extensions:
   org.fcitx.Fcitx5.Addon:
@@ -134,7 +134,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 815cc6669489fd87c4235fc25245c8d230dad3b2
+        commit: 718a451edc365e21a9cc41551f81b9fb13f13d51
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: 2.5.2
