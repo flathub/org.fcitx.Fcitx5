@@ -30,12 +30,12 @@ modules:
   - modules/xcb-imdkit.yaml
   - modules/libuv.yaml
   - modules/json-c.yaml
+  - modules/enchant.yaml
   - name: fcitx5
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DUSE_SYSTEMD=Off
-      - -DENABLE_ENCHANT=Off
       - -DUSE_FLATPAK_ICON=On
       - -DENABLE_TEST=Off
     sources:
@@ -134,7 +134,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 8af51f8c8694d93565f3b30578baf1e976ef7641
+        commit: 8ed09cd93f8593bd7de48084059b5cffe0279b6e
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: 2.5.2
