@@ -30,6 +30,8 @@ finish-args:
   - --filesystem=xdg-config/ibus:create
   - --filesystem=xdg-cache/ibus:create
   - --device=dri
+cleanup-commands:
+  - /app/cleanup-BaseApp.sh
 modules:
   - modules/xcb-imdkit.yaml
   - modules/libuv.yaml
