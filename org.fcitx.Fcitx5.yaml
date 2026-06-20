@@ -45,8 +45,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.1.19
-        commit: e4c11948599a53cf12ae6286a86d7e36a4229a16
+        tag: 5.1.20
+        commit: 4f496a2f0c28c7c2cb03e4cb7967241426b8d071
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -68,16 +68,16 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
-        tag: 5.1.13
-        commit: 51cc53b68c792a87bebee60e29e09593044b67ed
+        tag: 5.1.14
+        commit: 6fc4fdd5216c0bab3ed269fa821d00fda2a1ef10
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-configtool
-        tag: 5.1.13
-        commit: ecdd4e9dbaa74dfadeb1bcc8719e6f39f343755e
+        tag: 5.1.14
+        commit: 85524aceff56305ad6237d4d5d2adfb919ce7887
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DUSE_QT6=On
@@ -98,18 +98,18 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-chewing
         dest: fcitx5-chewing
-        tag: 5.1.11
-        commit: 37068c3a2442d7f107e2836fe62270d718a0a3f5
+        tag: 5.1.12
+        commit: 8aa494168dcb54d318b48b213252207aeff9a21c
       - type: git
         url: https://github.com/fcitx/fcitx5-chinese-addons
         dest: fcitx5-chinese-addons
-        tag: 5.1.12
-        commit: af0b11f17bc81ea10f2559a402c76b11bf429255
+        tag: 5.1.13
+        commit: 334f30f9f4738c69f4a0eccbbdb7362a7d7497ba
       - type: git
         url: https://github.com/fcitx/fcitx5-hangul
         dest: fcitx5-hangul
-        tag: 5.1.9
-        commit: b10c457c58d80ecc4e870c02bc8287bbd1305e38
+        tag: 5.1.10
+        commit: 8205b46472bfc6af0603e5ac126394844bf8d8a5
       - type: git
         url: https://github.com/fcitx/fcitx5-kkc
         dest: fcitx5-kkc
@@ -118,8 +118,8 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-rime
         dest: fcitx5-rime
-        tag: 5.1.13
-        commit: 960446767ab51106d775f08e9d7b34dc605c60ba
+        tag: 5.1.14
+        commit: c1974da96c15f4da628c1e5b2874f1fe1bb20b09
       - type: git
         url: https://github.com/fcitx/fcitx5-sayura
         dest: fcitx5-sayura
@@ -133,28 +133,28 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-table-extra
         dest: fcitx5-table-extra
-        tag: 5.1.11
-        commit: 11741e448796367f9a76886bfd60080769dd58bb
+        tag: 5.1.12
+        commit: bdeba2923df3e01643f2b14767987db29d75936f
       - type: git
         url: https://github.com/fcitx/fcitx5-table-other
         dest: fcitx5-table-other
-        tag: 5.1.6
-        commit: eeda1c2f79d614a60cacf03f813ed615b9b9c30c
+        tag: 5.1.7
+        commit: 6237e56795a8ba775be02857cd12da468885f144
       - type: git
         url: https://github.com/fcitx/fcitx5-unikey
         dest: fcitx5-unikey
-        tag: 5.1.10
-        commit: e848a28007c3db51982d3e838cb9154e9507f1ea
+        tag: 5.1.11
+        commit: 7fe9cd7971064ae8ca2fb90df76b44a72e415f3e
       - type: git
         url: https://github.com/fcitx/fcitx5-zhuyin
         dest: fcitx5-zhuyin
-        tag: 5.1.7
-        commit: edbd26e70a92956d1a0dda3b30e83b8bae54552b
+        tag: 5.1.8
+        commit: 7d4d23cbe9a26e26a8af3393385cf0446a5043bf
       - type: git
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: da1065bf3b03a825cdca462b8588e387d85549e4
+        commit: 780dbd48e2e2fa392c3500035f1d56a34f105718
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: '3.0'
