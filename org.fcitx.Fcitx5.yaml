@@ -45,8 +45,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.1.20
-        commit: 4f496a2f0c28c7c2cb03e4cb7967241426b8d071
+        tag: 5.1.21
+        commit: 69f0bf4cf5f379f939af7a25a4dcd114ed81ad2c
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -80,7 +80,6 @@ modules:
         commit: 85524aceff56305ad6237d4d5d2adfb919ce7887
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DUSE_QT6=On
       - -DENABLE_KCM=Off
   - name: fcitx5-all-icons
     buildsystem: simple
@@ -154,7 +153,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 02eaaa6dc82e629990b70b90f8dc37d0ff6741d5
+        commit: 35898ee6c4f7424ae73000bbd754510d7ab772d0
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: '3.0'
