@@ -156,8 +156,8 @@ modules:
         commit: 35898ee6c4f7424ae73000bbd754510d7ab772d0
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
-        tag: '3.0'
-        commit: 07dd922ddab159dd4c1865dee73f009aa3c8fdc1
+        tag: '3.1'
+        commit: 28a8c93944c0dcfb7855b423ccc94854673fd1df
         x-checker-data:
           type: anitya
           project-id: 243006
