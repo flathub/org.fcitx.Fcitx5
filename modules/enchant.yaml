@@ -6,8 +6,8 @@ cleanup:
   - /include
 sources:
   - type: archive
-    url: https://github.com/rrthomas/enchant/releases/download/v2.8.16/enchant-2.8.16.tar.gz
-    sha256: d73162b5eff401a6397e1215e2b103bcef83f921c396c7f6b1394d2450d124e2
+    url: https://github.com/rrthomas/enchant/releases/download/v2.8.19/enchant-2.8.19.tar.gz
+    sha256: c8d70991d544ee39274b96bd01d2858a009fe732ff43f2aaf605fd61ecd06f60
     x-checker-data:
       type: anitya
       project-id: 6601
