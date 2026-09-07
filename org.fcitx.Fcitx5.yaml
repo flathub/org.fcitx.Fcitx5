@@ -1,8 +1,8 @@
 app-id: org.fcitx.Fcitx5
 base: io.qt.qtwebengine.BaseApp
-base-version: '6.10'
+base-version: '6.11'
 runtime: org.kde.Platform
-runtime-version: '6.10'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 add-extensions:
   org.fcitx.Fcitx5.Addon:
@@ -31,10 +31,69 @@ finish-args:
   - --filesystem=xdg-cache/ibus:create
   - --device=dri
 modules:
-  - modules/xcb-imdkit.yaml
-  - modules/libuv.yaml
-  - modules/nlohmann-json.yaml
-  - modules/enchant.yaml
+  - name: xcb-imdkit
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/fcitx/xcb-imdkit
+        tag: 1.0.9
+        commit: 5a749718214ee2bcfec7751bd0087d101b9a7ab6
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/cmake
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+  - name: libuv
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    sources:
+      - type: git
+        url: https://github.com/libuv/libuv/
+        tag: v1.52.1
+        x-checker-data:
+          type: anitya
+          project-id: 10784
+          stable-only: true
+          tag-template: v${version}
+        commit: 1cfa32ff59c076ffb6ed735bbc8c18361558661f
+    cleanup:
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /lib/cmake
+      - /lib/*.a
+  - name: nlohmann-json
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DJSON_BuildTests=OFF
+      - -DJSON_MultipleHeaders=ON
+      - -DJSON_SystemInclude=ON
+    sources:
+      - type: archive
+        url: https://github.com/nlohmann/json/archive/v3.12.0.tar.gz
+        sha256: 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
+        x-checker-data:
+          type: anitya
+          project-id: 11152
+          stable-only: true
+          url-template: https://github.com/nlohmann/json/archive/v${version}.tar.gz
+  - name: enchant
+    cleanup:
+      - '*.a'
+      - '*.la'
+      - /bin
+      - /include
+    sources:
+      - type: archive
+        url: https://github.com/rrthomas/enchant/releases/download/v2.8.21/enchant-2.8.21.tar.gz
+        sha256: dd2a762697c463148a8f59867089a5ebf2dd1449d869f93764b76c12bcf8acc0
+        x-checker-data:
+          type: anitya
+          project-id: 6601
+          url-template: https://github.com/rrthomas/enchant/releases/download/v$version/enchant-$version.tar.gz
   - name: fcitx5
     buildsystem: cmake-ninja
     config-opts:
@@ -45,8 +104,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.1.21
-        commit: 69f0bf4cf5f379f939af7a25a4dcd114ed81ad2c
+        tag: 5.1.22
+        commit: 9dd4f34019f5b5ea3e576dfddd0eb3993cb17d7f
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -68,16 +127,16 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
-        tag: 5.1.14
-        commit: 6fc4fdd5216c0bab3ed269fa821d00fda2a1ef10
+        tag: 5.1.15
+        commit: d73fca6ef2dbd605da05dd4c1844e5bb2d91a5c5
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-configtool
-        tag: 5.1.14
-        commit: 85524aceff56305ad6237d4d5d2adfb919ce7887
+        tag: 5.1.15
+        commit: 9ae6d0503b3855dd8b31a1fbc121917b1921cf43
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DENABLE_KCM=Off
@@ -87,77 +146,77 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-anthy
         dest: fcitx5-anthy
-        tag: 5.1.10
-        commit: 056a2224f11f9f5fbd1080943a38199ad08d6542
+        tag: 5.1.11
+        commit: 76262fffb04b36a628c931cb8cb2c272920be8bb
       - type: git
         url: https://github.com/fcitx/fcitx5-bamboo
         dest: fcitx5-bamboo
-        tag: 1.0.10
-        commit: bd8631bd49c4279d8e69b5de9299ac687ce9b43b
+        tag: 1.0.11
+        commit: 161ac10b1ff451525ca78fe523a599e5bbfff148
       - type: git
         url: https://github.com/fcitx/fcitx5-chewing
         dest: fcitx5-chewing
-        tag: 5.1.12
-        commit: 8aa494168dcb54d318b48b213252207aeff9a21c
+        tag: 5.1.13
+        commit: 728e3f036447c52eaa6d819cefda814b275f949c
       - type: git
         url: https://github.com/fcitx/fcitx5-chinese-addons
         dest: fcitx5-chinese-addons
-        tag: 5.1.13
-        commit: 334f30f9f4738c69f4a0eccbbdb7362a7d7497ba
+        tag: 5.1.14
+        commit: 93b81c1b88973ffa0d8f9419861245643bbe8cad
       - type: git
         url: https://github.com/fcitx/fcitx5-hangul
         dest: fcitx5-hangul
-        tag: 5.1.10
-        commit: 8205b46472bfc6af0603e5ac126394844bf8d8a5
+        tag: 5.1.11
+        commit: a9cd9daa71e7a9a36531bcbf73338aaa7227f448
       - type: git
         url: https://github.com/fcitx/fcitx5-kkc
         dest: fcitx5-kkc
-        tag: 5.1.10
-        commit: e7ea362502af71abc6432ec3f23b9b3b9adf0b82
+        tag: 5.1.11
+        commit: 0c8f4be55c027683381807ed6290aed4e3215ea0
       - type: git
         url: https://github.com/fcitx/fcitx5-rime
         dest: fcitx5-rime
-        tag: 5.1.14
-        commit: c1974da96c15f4da628c1e5b2874f1fe1bb20b09
+        tag: 5.1.15
+        commit: 16e95d94d5d1b390fc55ee14429b5ffa3a0902db
       - type: git
         url: https://github.com/fcitx/fcitx5-sayura
         dest: fcitx5-sayura
-        tag: 5.1.6
-        commit: fc009468415820f4bf654078591ad4fe67e4f073
+        tag: 5.1.7
+        commit: 70fdadf994fb5130bad25e6ed63d5c38eb5c16bd
       - type: git
         url: https://github.com/fcitx/fcitx5-skk
         dest: fcitx5-skk
-        tag: 5.1.10
-        commit: 7f47d507e9b6af7468151991eedbccf89591426c
+        tag: 5.1.11
+        commit: 78bcf9c1d374d40ff9997e8630ea90f91c48ae78
       - type: git
         url: https://github.com/fcitx/fcitx5-table-extra
         dest: fcitx5-table-extra
-        tag: 5.1.12
-        commit: bdeba2923df3e01643f2b14767987db29d75936f
+        tag: 5.1.13
+        commit: 7c6955478bf821f20a19a8d1aae6fd2f50ba8471
       - type: git
         url: https://github.com/fcitx/fcitx5-table-other
         dest: fcitx5-table-other
-        tag: 5.1.7
-        commit: 6237e56795a8ba775be02857cd12da468885f144
+        tag: 5.1.8
+        commit: 4db66ac484ebba76bd4c2cc03f80f92b35778d2f
       - type: git
         url: https://github.com/fcitx/fcitx5-unikey
         dest: fcitx5-unikey
-        tag: 5.1.11
-        commit: 7fe9cd7971064ae8ca2fb90df76b44a72e415f3e
+        tag: 5.1.12
+        commit: 304c1964552a01beb9fca1a55407fc091f14761c
       - type: git
         url: https://github.com/fcitx/fcitx5-zhuyin
         dest: fcitx5-zhuyin
-        tag: 5.1.8
-        commit: 7d4d23cbe9a26e26a8af3393385cf0446a5043bf
+        tag: 5.1.9
+        commit: 18511eca982a9ee6b7e9f9bc8edb030660ee8d1e
       - type: git
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 35898ee6c4f7424ae73000bbd754510d7ab772d0
+        commit: 6b20c794f3112075703bae1603a81dce86b1f44e
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
-        tag: '3.0'
-        commit: 07dd922ddab159dd4c1865dee73f009aa3c8fdc1
+        tag: 3.1.1
+        commit: a84bdd5c741e1696b270159ebda675946dc73d49
         x-checker-data:
           type: anitya
           project-id: 243006
