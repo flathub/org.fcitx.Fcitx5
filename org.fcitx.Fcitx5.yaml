@@ -104,8 +104,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5
-        tag: 5.1.22
-        commit: 9dd4f34019f5b5ea3e576dfddd0eb3993cb17d7f
+        tag: 5.1.23
+        commit: 409b8cfc70ff671a9af6b003d65e48e3939f2f9a
       - type: file
         url: https://download.fcitx-im.org/data/en_dict-20121020.tar.gz
         sha256: c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4f5a6ceb
@@ -127,16 +127,16 @@ modules:
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-qt
-        tag: 5.1.15
-        commit: d73fca6ef2dbd605da05dd4c1844e5bb2d91a5c5
+        tag: 5.1.16
+        commit: 501dafc3b01195b4c826cb57adb3d222cb4e552f
   - name: fcitx5-configtool
     buildsystem: cmake-ninja
     builddir: true
     sources:
       - type: git
         url: https://github.com/fcitx/fcitx5-configtool
-        tag: 5.1.15
-        commit: 9ae6d0503b3855dd8b31a1fbc121917b1921cf43
+        tag: 5.1.16
+        commit: 2441c3df9c1d0c652a983e79f4e7115f888bfdc5
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DENABLE_KCM=Off
@@ -161,8 +161,8 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-chinese-addons
         dest: fcitx5-chinese-addons
-        tag: 5.1.14
-        commit: 93b81c1b88973ffa0d8f9419861245643bbe8cad
+        tag: 5.1.15
+        commit: 0a1fdef334f969dc089c6deac7b290777db9bca5
       - type: git
         url: https://github.com/fcitx/fcitx5-hangul
         dest: fcitx5-hangul
@@ -176,8 +176,8 @@ modules:
       - type: git
         url: https://github.com/fcitx/fcitx5-rime
         dest: fcitx5-rime
-        tag: 5.1.15
-        commit: 16e95d94d5d1b390fc55ee14429b5ffa3a0902db
+        tag: 5.1.16
+        commit: 62990605fe4380060719f33ca3b13f077feb0565
       - type: git
         url: https://github.com/fcitx/fcitx5-sayura
         dest: fcitx5-sayura
@@ -212,7 +212,7 @@ modules:
         url: https://github.com/fcitx/mozc
         dest: mozc
         disable-submodules: true
-        commit: 6b20c794f3112075703bae1603a81dce86b1f44e
+        commit: 91a85938122f4ab8ca855df98daf2acf2cf3cf3c
       - type: git
         url: https://github.com/openvanilla/fcitx5-mcbopomofo
         tag: 3.1.1
